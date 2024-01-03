@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %} 
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+  rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" 
+  crossorigin="anonymous">
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">  
+
+</head>
+{% block content %}
+<body style="background:rgba(229, 193, 136, 0.616)">
+  <nav class='nav' id="nav" style="z-index:200000 ;position: relative;top: 0;">
+     
+    <a href='/' class='title'>[Joby]</a>
+
+     {% if not request.user.is_applicant and not request.user.is_recruiter%}
+     <ul class='head' id="head">
+    <li>
+      <a href='{% url "register_app" %}'>Register Applicant</a>
+    </li>
+    <li>
+      <a href='{% url "register_rec" %}'>Register Recruiter</a>
+    </li>
+    </ul>
+    <!-- <ul class='icons'>
+      <li>
+        <img src="{% static 'image/pngwing.png' %}"class="png" />
+      </li>
+      <li>
+        <img src="{% static 'image/png2.png' %}" class="png" />
+      </li>
+      <li>
+        <img src="{% static 'image/png3.png' %}" class="png" />
+      </li>
+    </ul> -->
+    {% endif %} 
+    
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_applicant %}
+  <ul class='head' id="head">
+   
+          <li>
+            <a href='/'>Home</a>
+          </li>
+         
+    {% if request.user.has_resume %}
+          <li>
+            <a href='{% url "job_listing" %}'>Apply To Job</a>
+          </li>
+          <li>
+            <a href='{% url "applied_jobs" %}'>Applications</a>
+          </li>
+         {% else %} 
+          <li>
+            <a href='{% url "resume" %}'>Create Resume</a>
+          </li>
+          <li>
+            <a href='{% url "job_listing" %}'>Apply To Job</a>
+          </li>
+
+       
+
+          {% endif %}
+         <li>
+            <a href='{% url "login" %}'>Logout</a>
+          </li>
+        </ul>
+    {% elif  request.user.is_recruiter %}
+    <ul class='head' id="head">
+     
+      <li>
+        <a href='/'>Home</a>
+      </li>
+      
+        {% if request.user.has_company %}
+        <li>
+        <a href='{% url "create-job" %}'>Create Job Ads</a>
+      </li>
+      <li>
+        <a href='{% url "manage_jobs" %}'>Manage Jobs </a>
+      </li>
+      {% else %}
+      <li>
+        <a href='{% url "company" %}'>Create Company</a>
+      </li>
+      {% endif %}
+     
+      <li>
+        <a href='{% url "job_listing" %}'>All jobs</a>
+      </li>
+      <li>
+        <a href='{% url "login" %}'>Logout</a>
+      </li>
+    </ul>
+    
+    
+    
+    <!-- <ul class='icons'>
+        <li>
+          <img src="{% static 'image/pngwing.png' %}"class="png" />
+        </li>
+        <li>
+          <img src="{% static 'image/png2.png' %}" class="png" />
+        </li>
+        <li>
+          <img src="{% static 'image/png3.png' %}" class="png" />
+        </li>
+      </ul> -->
+      {% endif %}
+      
+      {% else %}
+  <ul>
+      <li>
+        <a href='{% url "job_listing" %}'>All jobs</a>
+      </li>
+    </ul>
+      {% endif %}
+     
+      <button class="navbar-toggler" type="button" data-toggle="collapse" onclick="toggleMenu()" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class=""> </span>
+        <span class=""> </span>
+
+      </button>
+      <div class="menu-links">
+        
+     {% if not request.user.is_applicant and not request.user.is_recruiter%}
+     <ul class='head1' id="head1">
+    <li>
+      <a href='{% url "register_app" %}'>Register Applicant</a>
+    </li>
+    <li>
+      <a href='{% url "register_rec" %}'>Register Recruiter</a>
+    </li>
+    </ul>
+    <!-- <ul class='icons'>
+      <li>
+        <img src="{% static 'image/pngwing.png' %}"class="png" />
+      </li>
+      <li>
+        <img src="{% static 'image/png2.png' %}" class="png" />
+      </li>
+      <li>
+        <img src="{% static 'image/png3.png' %}" class="png" />
+      </li>
+    </ul> -->
+    {% endif %} 
+    
+    {% if request.user.is_authenticated %}
+    {% if request.user.is_applicant %}
+  <ul class='head1' id="head">
+   
+          <li>
+            <a href='/'>Home</a>
+          </li>
+         
+    {% if request.user.has_resume %}
+          <li>
+            <a href='{% url "job_listing" %}'>Apply To Job</a>
+          </li>
+          <li>
+            <a href='{% url "applied_jobs" %}'>Applications</a>
+          </li>
+         {% else %} 
+          <li>
+            <a href='{% url "resume" %}'>Create Resume</a>
+          </li>
+          <li>
+            <a href='{% url "job_listing" %}'>Apply To Job</a>
+          </li>
+
+       
+
+          {% endif %}
+         <li>
+            <a href='{% url "login" %}'>Logout</a>
+          </li>
+        </ul>
+    {% elif  request.user.is_recruiter %}
+    <ul class='head1' id="head">
+     
+      <li>
+        <a href='/'>Home</a>
+      </li>
+      
+        {% if request.user.has_company %}
+        <li>
+        <a href='{% url "create-job" %}'>Create Job Ads</a>
+      </li>
+      <li>
+        <a href='{% url "manage_jobs" %}'>Manage Jobs </a>
+      </li>
+      {% else %}
+      <li>
+        <a href='{% url "company" %}'>Create Company</a>
+      </li>
+      {% endif %}
+     
+      <li>
+        <a href='{% url "job_listing" %}'>All jobs</a>
+      </li>
+      <li>
+        <a href='{% url "login" %}'>Logout</a>
+      </li>
+    </ul>
+    
+    
+    
+    <!-- <ul class='icons'>
+        <li>
+          <img src="{% static 'image/pngwing.png' %}"class="png" />
+        </li>
+        <li>
+          <img src="{% static 'image/png2.png' %}" class="png" />
+        </li>
+        <li>
+          <img src="{% static 'image/png3.png' %}" class="png" />
+        </li>
+      </ul> -->
+      {% endif %}
+      
+      {% else %}
+  <ul>
+      <li>
+        <a href='{% url "job_listing" %}'>All jobs</a>
+      </li>
+    </ul>
+      {% endif %}
+     
+     
+  </nav>  
+
+  <section class="details" style="justify-content: center;position: relative;display: flex;" >
+
+  
+    <div class="card" id="s" style="width: 70%;padding-left: 20px;height: 85%;margin-top: 20px;box-shadow: 5px 5px 5px 5px rgb(98, 97, 97)
+    ;border:1px solid rgb(173, 169, 169);">
+      <div class="card-body">
+        <h2 class="card-title">{{jobs.title}}</h2>
+        <hr>
+        <p class="card-text"><h5>Job Location</h5><img src="{% static 'image/location.png' %}" style="width: 20px;"/>{{jobs.country}},{{jobs.city}}</p>
+        <p class="card-text"><h5>Posted By</h5><img src="{% static 'image/company.png' %}" style="width: 20px;"/>{{jobs.company}}</p>
+        <p class="card-text"><h5>Salary</h5><img src="{% static 'image/salary.png' %}" style="width: 20px;"/>{{jobs.salary}}|{{jobs.job_type}}</p>
+        {% if has_applied == False %}
+        <a href="{% url 'apply' jobs.pk %}"   class="btn btn-primary">Apply Now</a>
+        {% else %}
+        <p class="card-text" style="color:rgb(229, 60, 60) ;">you have already applied for this job</p>
+        {% endif %}
+    
+        <p class="card-text">{{jobs.timestamp}}</p>
+        <hr>
+        <h4>Job Description</h4>
+        <p>{{jobs.requirements}}</p>
+        <br>
+        <h4>Idail Candidate</h4>
+        <p>{{jobs.ideal_candidate}}</p>
+  <hr>
+  
+  </div>
+      </div>
+    
+    <!-- <h2>About the Company</h2>
+    <p>{{jobs.company.name}}</p>
+    <p>{{jobs.company.city}},|{{jobs.company.state}}</p>
+    <p>{{jobs.company.date}}</p> -->
+  
+    </section> 
+    <script>
+      function toggleMenu() {
+  const menu = document.querySelector(".menu-links");
+  const icon = document.querySelector(".navbar-toggler");
+  menu.classList.toggle("open");
+  icon.classList.toggle("open");
+}
+    </script>
+</body>
+</html>
+
+
+{% endblock content %}

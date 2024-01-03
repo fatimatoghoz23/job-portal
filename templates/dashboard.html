@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Document</title>
+       <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">  
+
+</head>
+<body>
+       {% if request.user.is_applicant  %}
+{% if not request.user.has_resume  %}
+<h2 style="margin-top: 100px;">you have not created any resume create<a href="{% url 'resume' %}">here</a></h2>
+{% endif %}
+{% for message in messages %}
+        <p id="messages" style="margin-top: 80px;" >{{message}}</p>
+       {% endfor %}
+
+{% elif request.user.is_recruiter  %}
+{% if not request.user.has_company %}
+<p style="margin-top: 100px;">
+  {% for message in messages %}
+        <p id="messages" style="margin-top: 80px;" >{{message}}</p>
+       {% endfor %}
+</p>
+<div style="margin-top: 100px;">create company now<a href="{% url 'company' %}">here</a></div>
+{% endif %}
+{% for message in messages %}
+<p id="messages" style="margin-top: 80px;">{{message}}</p>
+{% endfor %}
+{% endif %}
+
+</body>
+</html>
+
+{% endblock content %}

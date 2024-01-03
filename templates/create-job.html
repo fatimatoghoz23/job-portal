@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="POST" class="form_company" action="">
+    {% csrf_token %}
+  
+  <div id="company-info" style="padding: 20px;">
+    {% for message in messages %}
+  <p id="messages" >{{message}}</p>
+  {% endfor %}
+    
+    <h3>Create job ads :</h3>
+   
+    <div class="sss">
+    <div class="form-field"  >
+      <label style="display: block;">title</label>
+      {{form.title}}
+    </div>
+    <div class="form-field">
+      <label style="display: block;">country</label>
+          {{form.country}}
+    </div> 
+    <div class="form-field">
+      <label style="display: block;">city</label>
+          {{form.city}}
+    </div> 
+    <div class="form-field">
+      <label style="display: block;">industry</label>
+          {{form.industry}}
+    </div> 
+    <div class="form-field">
+      <label style="display: block;">job type</label>
+          {{form.job_type}}
+    </div> 
+    <div class="form-field">
+  <label style="display: block;">salary</label>  
+    {{form.salary}}
+    </div>
+    <div class="form-field">
+      <label style="display: block;">requirements</label>
+      {{form.requirements}}
+    </div>
+    <div class="form-field">
+      <label style="display: block;">ideal candidate</label>
+      {{form.ideal_candidate}}
+    </div>
+     
+    <div class="form-field">
+      <label style="display: block;">is available</label>
+      {{form.is_available}}
+    </div>
+  </div>
+  
+ <br>
+  <button id="form-button"  class="btn btn-success btn-block" type="submit" value="submit">submit</button>
+  </form>
+  </div>
+</body>
+</html>
+
+
+{% endblock content %}

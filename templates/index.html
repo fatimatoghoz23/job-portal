@@ -1,0 +1,471 @@
+
+{% block content %}
+{% load static %} 
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">  
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+</head>
+
+<body>
+
+  <div>
+    <section class='section-main' >
+      <img src="{% static 'image/d.jpg' %}" class='img1' /> 
+
+      <div class='text-main' style="position: absolute;top: 100px;left: 20%;right: 20%;">
+        
+      <h1 class='h-main'><span class='title-main'>Find your dream <span>Job</span></span>
+        <!-- <div class='botton'>
+          <button class='start'><a href="{% url 'login' %}" style="text-decoration: none;color: #000;">Get Start</a></button>
+          </div> -->
+        </h1>
+          
+      </div>
+      
+
+        <form class='jobs' method="GET" action="/alljobs" style="display: flex;">
+          <div class="mm" >
+            <div><label >Job Title</label> <label class="location" style="margin-left: 190px;">Select Location</label></div> 
+       {{filter.form.title}}{{filter.form.city}}
+          </div>
+        
+        
+        
+        <!-- <label>Choose Job Type</label>
+        {{filter.form.job_type}} -->
+        <!-- <label>Select Industry</label>
+        {{filter.form.industry}} -->
+        <button type="submit" class='search2 ' style="padding:8px;background-color: #e36e4a;border: none;border-radius:30px ;width: 50px;height: 60px;position: relative;top:20px" >
+          <img src="{% static 'image/png3.png' %}" style="width: 20px;"/></button>
+        </form>
+    
+       
+    </section>
+   
+    <nav class='nav' id="nav" style="z-index:200000 ;">
+     
+      <a href='/' class='title'>[Joby]</a>
+  
+       {% if not request.user.is_applicant and not request.user.is_recruiter%}
+       <ul class='head' id="head">
+      <li>
+        <a href='{% url "register_app" %}'>Register Applicant</a>
+      </li>
+      <li>
+        <a href='{% url "register_rec" %}'>Register Recruiter</a>
+      </li>
+      </ul>
+      <!-- <ul class='icons'>
+        <li>
+          <img src="{% static 'image/pngwing.png' %}"class="png" />
+        </li>
+        <li>
+          <img src="{% static 'image/png2.png' %}" class="png" />
+        </li>
+        <li>
+          <img src="{% static 'image/png3.png' %}" class="png" />
+        </li>
+      </ul> -->
+      {% endif %} 
+      
+      {% if request.user.is_authenticated %}
+      {% if request.user.is_applicant %}
+    <ul class='head' id="head">
+     
+            <li>
+              <a href='/'>Home</a>
+            </li>
+           
+      {% if request.user.has_resume %}
+            <li>
+              <a href='{% url "job_listing" %}'>Apply To Job</a>
+            </li>
+            <li>
+              <a href='{% url "applied_jobs" %}'>Applications</a>
+            </li>
+           {% else %} 
+            <li>
+              <a href='{% url "resume" %}'>Create Resume</a>
+            </li>
+            <li>
+              <a href='{% url "job_listing" %}'>Apply To Job</a>
+            </li>
+
+         
+  
+            {% endif %}
+           <li>
+              <a href='{% url "login" %}'>Logout</a>
+            </li>
+          </ul>
+      {% elif  request.user.is_recruiter %}
+      <ul class='head' id="head">
+       
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        
+          {% if request.user.has_company %}
+          <li>
+          <a href='{% url "create-job" %}'>Create Job Ads</a>
+        </li>
+        <li>
+          <a href='{% url "manage_jobs" %}'>Manage Jobs </a>
+        </li>
+        {% else %}
+        <li>
+          <a href='{% url "company" %}'>Create Company</a>
+        </li>
+        {% endif %}
+       
+        <li>
+          <a href='{% url "job_listing" %}'>All jobs</a>
+        </li>
+        <li>
+          <a href='{% url "login" %}'>Logout</a>
+        </li>
+      </ul>
+      
+      
+      
+      <!-- <ul class='icons'>
+          <li>
+            <img src="{% static 'image/pngwing.png' %}"class="png" />
+          </li>
+          <li>
+            <img src="{% static 'image/png2.png' %}" class="png" />
+          </li>
+          <li>
+            <img src="{% static 'image/png3.png' %}" class="png" />
+          </li>
+        </ul> -->
+        {% endif %}
+        
+        {% else %}
+    <ul>
+        <li>
+          <a href='{% url "job_listing" %}'>All jobs</a>
+        </li>
+      </ul>
+        {% endif %}
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" onclick="toggleMenu()" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class=""> </span>
+          <span class=""> </span>
+
+        </button>
+        <div class="menu-links">
+          
+       {% if not request.user.is_applicant and not request.user.is_recruiter%}
+       <ul class='head1' id="head1">
+      <li>
+        <a href='{% url "register_app" %}'>Register Applicant</a>
+      </li>
+      <li>
+        <a href='{% url "register_rec" %}'>Register Recruiter</a>
+      </li>
+      </ul>
+      <!-- <ul class='icons'>
+        <li>
+          <img src="{% static 'image/pngwing.png' %}"class="png" />
+        </li>
+        <li>
+          <img src="{% static 'image/png2.png' %}" class="png" />
+        </li>
+        <li>
+          <img src="{% static 'image/png3.png' %}" class="png" />
+        </li>
+      </ul> -->
+      {% endif %} 
+      
+      {% if request.user.is_authenticated %}
+      {% if request.user.is_applicant %}
+    <ul class='head1' id="head">
+     
+            <li>
+              <a href='/'>Home</a>
+            </li>
+           
+      {% if request.user.has_resume %}
+            <li>
+              <a href='{% url "job_listing" %}'>Apply To Job</a>
+            </li>
+            <li>
+              <a href='{% url "applied_jobs" %}'>Applications</a>
+            </li>
+           {% else %} 
+            <li>
+              <a href='{% url "resume" %}'>Create Resume</a>
+            </li>
+            <li>
+              <a href='{% url "job_listing" %}'>Apply To Job</a>
+            </li>
+
+         
+  
+            {% endif %}
+           <li>
+              <a href='{% url "login" %}'>Logout</a>
+            </li>
+          </ul>
+      {% elif  request.user.is_recruiter %}
+      <ul class='head1' id="head">
+       
+        <li>
+          <a href='/'>Home</a>
+        </li>
+        
+          {% if request.user.has_company %}
+          <li>
+          <a href='{% url "create-job" %}'>Create Job Ads</a>
+        </li>
+        <li>
+          <a href='{% url "manage_jobs" %}'>Manage Jobs </a>
+        </li>
+        {% else %}
+        <li>
+          <a href='{% url "company" %}'>Create Company</a>
+        </li>
+        {% endif %}
+       
+        <li>
+          <a href='{% url "job_listing" %}'>All jobs</a>
+        </li>
+        <li>
+          <a href='{% url "login" %}'>Logout</a>
+        </li>
+      </ul>
+      
+      
+      
+      <!-- <ul class='icons'>
+          <li>
+            <img src="{% static 'image/pngwing.png' %}"class="png" />
+          </li>
+          <li>
+            <img src="{% static 'image/png2.png' %}" class="png" />
+          </li>
+          <li>
+            <img src="{% static 'image/png3.png' %}" class="png" />
+          </li>
+        </ul> -->
+        {% endif %}
+        
+        {% else %}
+    <ul>
+        <li>
+          <a href='{% url "job_listing" %}'>All jobs</a>
+        </li>
+      </ul>
+        {% endif %}
+       
+        </div>
+    </nav>  
+   <div >
+   <!--start pricing-->
+
+<!-- {% with count=0 %}
+{% for i in jobs %}
+{% if i.industry == "technology" %}
+    {{ count|add:1 }}
+{% endif%}
+{% endfor %} -->
+<div class="industry">
+  <div class="container">
+    <div class="box">
+      <h1 class="title">Technology</h1>
+      <img src="{% static 'image/tech2.png' %}"  style="width: 35%;"/> 
+            <div class="price">
+        <span class="amount">{{technology}}</span>
+      </div>
+      {% endwith %}
+
+    </div>
+    <div class="box popular">
+      <h1 class="title">Industrial</h1>
+      <img src="{% static 'image/industry.png' %}"  style="width: 30%;"/> 
+      <div class="price">
+        <span class="amount">{{industry}}</span>
+      </div>
+     
+    </div>
+    <div class="box">
+      <h1 class="title">Educational</h1>
+      <img src="{% static 'image/Education.png' %}"  style="width: 35%;"/> 
+      <div class="price">
+        <span class="amount">{{educational}}</span>
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!--end pricing-->
+
+   
+    <div class="profile" style="margin-top: 40px;">
+      <div class="resume" >
+        <img src="{% static 'image/graphic-1.svg' %}"  style="width: 50%;"/> 
+        <div class="resumetext" >
+          <h1 style="margin-bottom: 30px;font-size:50px ;">Get started today</h1>
+          <p style="line-height: 40px;font-size: 20px;margin: 10px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla exercitationem harum cum labore vel consectetur veniam sed fuga magnam ullam error officia.</p>
+
+          {% if not request.user.is_applicant %}
+
+        <button class="btn-3d"><a href='{% url "login" %}' style="text-decoration: none;font-weight:bold ;color: #e36e4a;font-size:15px ;
+          ">Create Your Resume</a></button>
+        {% elif request.user.is_applicant %}
+        <button class="btn-3d" ><a href='{% url "resume" %}' style="text-decoration: none;font-weight:bold ;color: #e36e4a;font-size: 15px;
+          ">Create Your Resume</a></button>
+
+        {% endif %}
+        </div>
+        <div class="resume2"></div>
+
+      </div>
+
+    </div>
+    <section class='gallery' >
+    
+      <div class='container'>
+      <div class='box' style="padding-top: 20px;">
+       <img src="{% static 'image/feature_icon_2.png' %}" class='img1' /> 
+        <h3 style="margin-top: 20px;">COPLETE PROFILE</h3>
+        <p>Once you are approved, we showcase you to leading startups</p></div>
+      <div class=' box' style="padding-top: 60px;">
+      <img src="{% static 'image/icon1.png' %}" class='img1' />
+        <h3 style="margin-top: 20px;">RECEIVE JOB OFFERS</h3>
+        <p>Companies start sending interview requests.</p>
+        </div>
+      <!-- <div class=' box'>
+      <img src="{% static 'image/icon2.png' %}" class='img1' />
+     
+        <h3 style="margin-top: 20px;"> ACCEPT DREAM JOB</h3>
+        <p>Compare your offers and accept the best one. Hired!
+      </p>
+      </div> -->
+     </div>
+     
+    
+      <div class="gallery2" >
+
+        <img src="{% static 'image/k.png' %}" class='im'/>
+      </div>
+    </section>
+
+
+    
+<!--    
+    <div class="heading_container heading_center" >
+      <h1 style="margin-top: 150px;text-align: center;font-size:38px ;" >
+  
+        Testimonial
+      </h1>
+      <header>
+   
+        <p style="margin: 20px;font-size: 50px;cursor: pointer;">
+          <span class="span">&#139;</span>
+          <span class="span">&#155;</span>
+        </p>
+      </header>
+    <article class="gallery">
+      <div class='container' style="margin-bottom: 120px;display: inline-flex;">
+        {% for i in reviews %}
+
+       
+        <div class='box1'>
+          <div class="boxx">
+         <img src="{% static 'image/dd.jpg' %}" class='imggg' /> 
+        </div>
+
+          <h2 style="margin-top: 30px;">{{i.resume}}</h2>
+          <h6
+          style="color: rgb(96, 92, 92);font-size:20px ;margin-top: 10px;">{{i.text}}</h6>
+        </div>
+       
+          {% endfor %}
+          </div>
+    </article>
+   
+   
+   
+</div> -->
+    <script >
+     
+ScrollReveal({ reset: true,
+  distance:'60px',
+  duration:2000,
+  delay:400
+
+ });
+ ScrollReveal().reveal('.img,h3,h1', { delay: 200 ,origin:'left'});
+  ScrollReveal().reveal('.img1', { delay: 300 ,origin:'top'});
+
+
+
+ let span = document.getElementsByClassName('span');
+	let product = document.getElementsByClassName('box1')
+	let product_page = Math.ceil(product.length/4);
+	let l = 0;
+	let movePer = 60.34;
+	let maxMove = 203;
+	// mobile_view	
+	let mob_view = window.matchMedia("(max-width: max-content)");
+	if (mob_view.matches)
+	 {
+	 	movePer = 80.36;
+	 	maxMove = 504;
+	 }
+
+	let right_mover = ()=>{
+		l = l + movePer;
+		if (product == 1){l = 0; }
+		for(const i of product)
+		{
+			if (l > maxMove){l = l - movePer;}
+			i.style.left = '-' + l + '%';
+		}
+
+	}
+	let left_mover = ()=>{
+		l = l - movePer;
+		if (l<=0){l = 0;}
+		for(const i of product){
+			if (product_page>1){
+				i.style.left = '-' + l + '%';
+			}
+		}
+	}
+  for(i=0;i<span.length;i++){
+    span[1].onclick = ()=>{right_mover();}
+	  span[0].onclick = ()=>{left_mover();}
+  }
+	
+
+    </script>
+   
+  </div>
+  <script>
+     function toggleMenu() {
+  const menu = document.querySelector(".menu-links");
+  const icon = document.querySelector(".navbar-toggler");
+  menu.classList.toggle("open");
+  icon.classList.toggle("open");
+}
+  </script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
+   
+{% include 'footer.html'%}
+
+{% endblock content %}

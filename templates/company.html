@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">  
+
+</head>
+<body>
+  <form method="POST" action="">
+    {% csrf_token %}
+  
+  <div id="shipping-info" style="margin-top:90px ;padding: 20px;">
+    <hr>
+    <h2>Create Company :</h2>
+    <hr>
+    <div class="form-field">
+      <label style="display: block;">company name</label>
+      {{form.name}}
+    </div>
+    <div class="form-field">
+      <label style="display: block;">Established Date</label>
+          {{form.date}}
+    </div> <div class="form-field">
+  <label style="display: block;">country</label>  
+    {{form.country}}
+    </div>
+    <div class="form-field">
+      <label style="display: block;">city</label>
+      {{form.city}}
+    </div>
+   
+    
+  
+  <hr>
+  <button id="form-button" class="btn btn-success btn-block" type="submit" value="submit">submit</button>
+  </form>
+  </div>
+  </form>
+</body>
+</html>
+
+{% for message in messages %}
+<p id="messages" >{{message}}</p>
+{% endfor %}
+{% endblock content %}

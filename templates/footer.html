@@ -1,0 +1,41 @@
+{% block content %}
+{% load static %} 
+<head>
+  <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">  
+
+</head>
+    <div>
+     <section class='footer'>
+      <div class='footer1'>
+      <div class='connect'>
+      <h3>Connect</h3>
+      <p>Contact Us</p>
+      <li>
+       <img src="{% static 'image/tweeter.png' %}" class="png" />
+       </li>
+       <li>
+       <img src="{% static 'image/linkedin.png' %}" class="png" />
+       </li>
+       <li>
+       <img src="{% static 'image/facebook.png' %}" class="png" />
+       </li>
+     </div>
+     <div class='jobb'>
+      <h3>Job By Location</h3>
+      <p>job in india</p>
+      <p>job in middle east</p>
+      <p>job in Africa</p>
+      <p>job in Spain</p>
+      <p>job in United States</p>
+     </div>
+     <div class='function'>
+      <h3>Jobs by Function</h3>
+      <p>Software Engineering Jobs</p>
+      <p>Marketing Jobs </p>
+      <p>Sales Jobs</p>
+      <p>Product Manager Jobs</p>
+     </div>
+     </div>
+     </section>
+    </div>
+    {% endblock content %}
