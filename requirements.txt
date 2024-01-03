@@ -113,8 +113,6 @@ torch==2.1.1
 tqdm==4.65.0
 transformers==4.35.2
 typing_extensions==4.8.0
-tzdata==2023.3
-tzlocal==5.0.1
 urllib3==1.26.15
 virtualenv==20.21.0
 Werkzeug==2.3.4
