@@ -85,7 +85,6 @@ pyjsparser==2.7.1
 pymongo==3.13.0
 PyMsgBox==1.0.9
 pyperclip==1.8.2
-pypiwin32==223
 PyPrind==2.11.3
 PyRect==0.2.0
 pyscreenshot==3.1
