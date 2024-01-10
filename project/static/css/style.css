@@ -252,6 +252,9 @@ align-items: center;
 grid-template-columns: repeat(auto-fill , minmax(200px,1fr));
 position: absolute;
    } */
+	 .title-main .e{
+    font-size: 40px;
+  }
    #card-jobs3{
     margin: 0;
    }
