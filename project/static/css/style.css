@@ -303,6 +303,8 @@ position: absolute;
    }
    .hide{
     display: none;
+    border-bottom-right-radius: 10px;
+
    }
   #x{
     width: 20rem;
