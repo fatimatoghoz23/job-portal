@@ -265,13 +265,14 @@
  
 
     
-<section class="card-jobs" id="card-jobs" style="justify-content: center;position: relative;display: flex;">
+<section class="card-jobs" id="card-jobs" style="justify-content: center;position: relative;">
 
 {% if jobs %}
 {% for job in jobs %}
 <div class="container" id="card-jobs2" >
 <div class="cardd" style="background-color: #fff;margin:5px ;border-radius:10px ;box-shadow: 5px 0 5px rgb(98, 97, 97),
-7px 0 5px rgb(125, 122, 122);border:1px solid rgb(173, 169, 169);width: 100%;">
+7px 0 5px rgb(125, 122, 122);border:1px solid rgb(173, 169, 169);width: 100%;width: 70%;padding-left: 20px;height: 85%;margin-top: 20px;box-shadow: 5px 5px 5px 5px rgb(98, 97, 97)
+    ;border:1px solid rgb(173, 169, 169);">
   <div class="card-body">
     <h2 class="card-title">{{job.title}}</h2>
     <hr style="height: 5px;width: 100%;background-color: #000;">
