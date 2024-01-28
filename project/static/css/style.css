@@ -157,11 +157,11 @@ align-items: center;
   }
   
   #jobs2{
-    padding: 100px;
+    padding: 80px;
     background-color:#fff;
     display: flex;
     flex-direction:row;
-    height: 30px;
+    height: 20px;
     top:10px;
     color: #000;
     border-radius: 10px;
@@ -482,7 +482,7 @@ button:hover{
   color: #555;
 }
 .search{
-  display: block;
+  display: flex;
   position: relative;
   padding: 6px 15px;
   /* border: 1px solid rgb(152, 150, 150); */
@@ -492,6 +492,8 @@ button:hover{
   width: 100px;
   border-radius: 10px;
   background-color: coral;
+	height: 30px;
+  margin-left: 5px;
 }
 .jobs input{
   height: 57px;
@@ -523,11 +525,11 @@ display: flex;
 }
 
 .jobs2{
-  padding: 100px;
+  padding: 80px;
   background-color:#fff;
   display: flex;
   flex-direction:row;
-  height: 70px;
+  height: 20px;
   top:20px;
   color: #000;
   border-radius: 10px;
