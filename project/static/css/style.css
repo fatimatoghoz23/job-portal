@@ -131,7 +131,9 @@ padding: .25rem;
   display: grid;width:100% ;
   grid-template-columns: repeat(auto-fill , minmax(300px,1fr));
   margin-top:40px;
-margin-left:10px	
+margin-left:20px
+	justify-content: center;
+
 }
 #jobs2{
 display: none;
