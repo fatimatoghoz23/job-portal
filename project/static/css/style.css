@@ -474,14 +474,16 @@ border: 2px solid rgb(63, 63, 63);
 .jobs2 input{
   height: 40px;
   width: 130px;
+  display: flex ;
 }
 .jobs2 select{
   height: 40px;
   width: 80px;
+  display: flex;
 }
 .jobs2 label{
 padding-top:30px ;
-display: block;
+display: flex;
 }
 .search-jobs{
   display: flex;
@@ -492,17 +494,13 @@ display: block;
 .jobs2{
   padding: 100px;
   background-color:#fff;
-  display: block;
-  flex-direction:column;
-  flex-wrap: wrap;
-  position: absolute;
-  width: 25%;
-  right: 130px;
-  top:100px;
+  display: flex;
+  flex-direction:row;
+  height: 70px;
+  top:20px;
   color: #000;
   border-radius: 10px;
-  height: 700px;
-
+  position: relative;
 }
 .jobs label{
   font-weight: bold;
