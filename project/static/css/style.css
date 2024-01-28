@@ -390,12 +390,10 @@ position: absolute;
 }
 
 .card-jobs{
-  display: grid;width:50% ;
-  grid-template-columns: repeat(auto-fill , minmax(500px,1fr));
-  margin-top:20px;
-  margin-left: 60px;
+  display: grid;width:100% ;
+  grid-template-columns: repeat(auto-fill , minmax(800px,1fr));
+  margin-top:40px;
 }
-
 .title-main{
   margin-top: 120px;
   color:#fff;
@@ -511,7 +509,7 @@ border: 2px solid rgb(63, 63, 63);
 }
 .jobs2 select{
   height: 40px;
-  width: 80px;
+  width: 160px;
   display: flex;
 }
 .jobs2 label{
