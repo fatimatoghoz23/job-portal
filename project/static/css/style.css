@@ -135,7 +135,38 @@ position: absolute;
 text-align: center;
 align-items: center;
 }
-
+ #jobs2 input{
+    height: 20px;
+    width: 40px;
+    display: flex ;
+  }
+  #jobs2 select{
+    height: 20px;
+    width: 30px;
+    display: flex;
+  }
+  #jobs2 label{
+  padding-top:20px ;
+  display: flex;
+  font-size: 10px;
+  }
+  .search-jobs{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  
+  #jobs2{
+    padding: 100px;
+    background-color:#fff;
+    display: flex;
+    flex-direction:row;
+    height: 30px;
+    top:10px;
+    color: #000;
+    border-radius: 10px;
+    position: relative;
+  }
   .img{
     height: 350px;
     position: relative;
